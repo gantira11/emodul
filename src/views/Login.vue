@@ -100,6 +100,7 @@ export default {
           'username': this.username,
           'password': this.password
         }
+        console.log(formData);
         this.axios.post('/login', formData)
         .then((response) => {
           let responses = response.data
@@ -121,6 +122,7 @@ export default {
           }
         })
         .catch((err) => {
+          console.log(err)
           let error = err.response.data.message
           this.setAlert({
             status: true,

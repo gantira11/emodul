@@ -6,12 +6,17 @@ import axios from "axios";
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 let config = {
   // baseURL: 'http://emodul-api.test/v1'
-  // baseURL: 'http://localhost:8000/v1'
-  baseURL: 'https://emodul-api.000webhostapp.com/v1'
+  // baseURL: 'http://localhost:8000/v1',
+  baseURL: 'https://emodul-api.000webhostapp.com/v1',
+
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.token}`
+  }
 
 
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
