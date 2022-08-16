@@ -131,11 +131,6 @@ export default {
         })
       }
     },
-    retrieveData() {
-      this.axios('/ditto').then((res) => {
-        console.log(res)
-      })
-    }
   },
   mounted() {
     const authUser = JSON.parse(localStorage.getItem('dataUser'));
@@ -146,7 +141,6 @@ export default {
         this.$router.push({name: 'program-studi'})
       }
     }
-    this.retrieveData()
   }
 }
 </script>
