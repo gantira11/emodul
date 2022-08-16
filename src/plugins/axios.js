@@ -7,6 +7,7 @@ import axios from "axios";
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
 
 let config = {
   // baseURL: 'http://emodul-api.test/v1'
