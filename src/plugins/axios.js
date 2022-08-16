@@ -6,18 +6,14 @@ import axios from "axios";
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 
 let config = {
   // baseURL: 'http://emodul-api.test/v1'
   // baseURL: 'http://localhost:8000/v1',
-  baseURL: 'https://emodul-api.000webhostapp.com/v1',
-
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.token}`
-  }
+  // baseURL: 'https://emodul-api.000webhostapp.com/v1',
+  baseURL: 'https://pokeapi.co/api/v2/pokemon',
 
 
   // baseURL: process.env.baseURL || process.env.apiUrl || ""

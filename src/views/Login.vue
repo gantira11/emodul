@@ -100,7 +100,6 @@ export default {
           'username': this.username,
           'password': this.password
         }
-        console.log(formData);
         this.axios.post('/login', formData)
         .then((response) => {
           let responses = response.data
@@ -122,7 +121,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err.response)
           let error = err.response.data.message
           this.setAlert({
             status: true,
@@ -131,6 +130,11 @@ export default {
           })
         })
       }
+    },
+    retrieveData() {
+      this.axios('/ditto').then((res) => {
+        console.log(res)
+      })
     }
   },
   mounted() {
@@ -142,6 +146,7 @@ export default {
         this.$router.push({name: 'program-studi'})
       }
     }
+    this.retrieveData()
   }
 }
 </script>
