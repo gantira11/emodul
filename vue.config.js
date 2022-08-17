@@ -1,6 +1,9 @@
-const { defineConfig } = require("@vue/cli-service");
-module.exports = defineConfig({
+import { defineConfig } from "@vue/cli-service";
+export default defineConfig({
   transpileDependencies: ["vuetify"],
+  devServer: {
+    proxy: 'https://dolphin-app-o4fcf.ondigitalocean.app'
+  },
   pwa: {
     workboxPluginMode: "InjectManifest",
     workboxOptions: {
