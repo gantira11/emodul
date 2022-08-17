@@ -10,8 +10,6 @@ import axios from "axios";
 // axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 
 let config = {
-  // baseURL: 'http://emodul-api.test/v1'
-  // baseURL: 'http://localhost:8000/v1',
   baseURL: 'https://dolphin-app-o4fcf.ondigitalocean.app/v1',
   
 

@@ -19,32 +19,32 @@ const routes = [
     children: [
       {
         name: 'dashboard',
-        path: 'dashboard',
+        path: 'dashboard/',
         component: () => import('../views/admin/Dashboard.vue'),
           meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
 
       },
       {
         name: 'emoduls',
-        path: 'emoduls',
+        path: 'emoduls/',
         component: () => import('../views/admin/Emodul.vue'),
           meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
       },
       {
         name: 'users',
-        path: 'users',
+        path: 'users/',
         component: () => import('../views/admin/User.vue'),
           meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
       },
       {
         name: 'matakuliah',
-        path: 'matakuliah',
+        path: 'matakuliah/',
         component: () => import('../views/admin/Matakuliah.vue'),
           meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
       },
       {
         name: 'prodi',
-        path: 'prodi',
+        path: 'prodi/',
         component: () => import('../views/admin/Prodi.vue'),
           meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
       }
@@ -57,48 +57,48 @@ const routes = [
     children: [
       {
         name: 'profile',
-        path: 'profile',
+        path: 'profile/',
         component: () => import('../views/mahasiswa/Profile.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
         name: 'bookmark',
-        path: 'bookmark',
+        path: 'bookmark/',
         component: () => import('../views/mahasiswa/Bookmark.vue'),
       },
       {
         name: 'program-studi',
-        path: 'program-studi',
+        path: 'program-studi/',
         component: () => import('../views/mahasiswa/Prodi.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        path: 'program-studi/:slug',
+        path: 'program-studi/:slug/',
         component: () => import('../views/mahasiswa/Matkul.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        path: 'program-studi/:slugProdi/:slug',
+        path: 'program-studi/:slugProdi/:slug/',
         component: () => import('../views/mahasiswa/Emodul.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        path: 'program-studi/:slugProdi/:slugMatkul/:slug',
+        path: 'program-studi/:slugProdi/:slugMatkul/:slug/',
         component: () => import('../views/mahasiswa/DetailEmodul.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        path: 'program-studi/:slugProdi/:slugMatkul/:slugModule/:slug',
+        path: 'program-studi/:slugProdi/:slugMatkul/:slugModule/:slug/',
         component: () => import('../views/mahasiswa/ViewModule.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        name: 'detail',
+        name: 'detail/',
         path: ':slug',
         component: () => import('../views/mahasiswa/DetailEmodul.vue'),
       },
       {
-        path: ':slugEmodul/:slug',
+        path: ':slugEmodul/:slug/',
         component: () => import('../views/mahasiswa/ViewModule.vue'),
       }
     ],
