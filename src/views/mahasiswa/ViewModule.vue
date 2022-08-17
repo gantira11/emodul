@@ -12,7 +12,7 @@ export default {
   name: 'ViewModule',
   data() {
     return {
-      backendPath: 'http://localhost:8000',
+      backendPath: 'https://dolphin-app-o4fcf.ondigitalocean.app',
       modulePath: ''
     }
   },

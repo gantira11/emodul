@@ -111,27 +111,27 @@ const router = new VueRouter({
   routes,
 })
 
-// router.beforeEach((to, from, next) => {
-//   if(to.meta.auth) {
-//     const authUser = JSON.parse(localStorage.getItem('dataUser'));
-//     if(!authUser || !authUser.token) {
-//       next({name: 'login'})
-//     } else if(to.meta.adminAuth) {
-//       if(authUser.user.role.role === 'Admin') {
-//         next()
-//       } else {
-//         next({name: 'program-studi'})
-//       }
-//     } else if(to.meta.mahasiswaAuth) {
-//       if(authUser.user.role.role === 'Mahasiswa') {
-//         next()
-//       } else {
-//         next({name: 'dashboard'})
-//       }
-//     }
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if(to.meta.auth) {
+    const authUser = JSON.parse(localStorage.getItem('dataUser'));
+    if(!authUser || !authUser.token) {
+      next({name: 'login'})
+    } else if(to.meta.adminAuth) {
+      if(authUser.user.role.role === 'Admin') {
+        next()
+      } else {
+        next({name: 'program-studi'})
+      }
+    } else if(to.meta.mahasiswaAuth) {
+      if(authUser.user.role.role === 'Mahasiswa') {
+        next()
+      } else {
+        next({name: 'dashboard'})
+      }
+    }
+  } else {
+    next()
+  }
+})
 
 export default router

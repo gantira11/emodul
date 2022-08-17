@@ -12,8 +12,8 @@ import axios from "axios";
 let config = {
   // baseURL: 'http://emodul-api.test/v1'
   // baseURL: 'http://localhost:8000/v1',
-  baseURL: 'https://emodul-api.000webhostapp.com/v1',
-  // baseURL: 'https://pokeapi.co/api/v2/pokemon',
+  baseURL: 'https://dolphin-app-o4fcf.ondigitalocean.app/v1',
+  
 
 
   // baseURL: process.env.baseURL || process.env.apiUrl || ""

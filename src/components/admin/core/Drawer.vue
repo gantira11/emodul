@@ -107,8 +107,10 @@ export default {
     ...mapActions({
       setSideBar: 'setSideBar'
     }),
+
     logout() {
       let dataUser = JSON.parse(localStorage.getItem('dataUser'));
+      // console.log('Bearer ' + dataUser.token)
       let config = {
         headers: {
           'Authorization': 'Bearer ' + dataUser.token
