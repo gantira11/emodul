@@ -3,7 +3,6 @@ import { precacheAndRoute } from "workbox-precaching";
 precacheAndRoute(self.__WB_MANIFEST);
 
 self.addEventListener("fetch", (evt) => {
-  if(evt.request.method !== "GET") return evt.waitUntil(update(evt.request));
   evt.respondWith(
     caches.match(evt.request).then((cacheRes) => {
       return (
@@ -17,6 +16,7 @@ self.addEventListener("fetch", (evt) => {
     })
   );
   
+  evt.waitUntil(update(evt.request));
 });
 
 const delay = (ms) => (_) =>
