@@ -108,8 +108,9 @@ export default {
               text: responses.message,
               type: 'success'
             })
-            this.close()
-            this.$root.$emit('matakuliah-view')
+            this.$router.go(0)
+            // this.close()
+            // this.$root.$emit('matakuliah-view')
           }
         })
         .catch((err) => {
