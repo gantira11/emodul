@@ -21,6 +21,7 @@ SchemaSyncHandler.sync();
 // 	// }
 // }
 
+
 new Vue({
   router,
   store,

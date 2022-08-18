@@ -176,7 +176,7 @@ export default {
             })
             this.$root.$emit('user-view')
             this.close()
-            this.$router.go(0)
+            // this.$router.go(0)
           }
         })
         .catch((err) => {

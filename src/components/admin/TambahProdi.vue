@@ -88,7 +88,7 @@ export default {
               });
               this.$root.$emit('prodi-view')
               this.close()
-              this.$router.go(0);
+              // this.$router.go(0);
 
             }
           })
