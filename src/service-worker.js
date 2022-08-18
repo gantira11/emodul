@@ -3,6 +3,7 @@ import { precacheAndRoute } from "workbox-precaching";
 precacheAndRoute(self.__WB_MANIFEST);
 
 self.addEventListener("fetch", (evt) => {
+  if(evt.request.method !== "GET") return evt.waitUntil(update(evt.request));
   evt.respondWith(
     caches.match(evt.request).then((cacheRes) => {
       return (
@@ -15,7 +16,7 @@ self.addEventListener("fetch", (evt) => {
       );
     })
   );
-  evt.waitUntil(update(evt.request));
+  
 });
 
 const delay = (ms) => (_) =>
@@ -23,9 +24,9 @@ const delay = (ms) => (_) =>
 
 function update(request) {
   return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`)
-    .then(delay(3000))
+    .then(delay(1000))
     .then( async (response) => {
-      console.log(response);
+      console.log('Cache :' + response);
       const cache = await caches.open("dynamicCache");
       cache.put(request.url, response.clone()); // we can put response in cache
     })
