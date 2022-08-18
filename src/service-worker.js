@@ -31,17 +31,18 @@ function update(request) {
       cache.put(request.url, response.clone()); // we can put response in cache
     })
     .then((response) =>
-      response.json().then((jsonResponse) => {
-        self.clients.matchAll().then((clients) => {
-          clients.postMessage(
-            JSON.stringify({
-              type: response.url,
-              data: jsonResponse.data,
-            })
-          );
-        });
-        return jsonResponse.data;
-      })
+      console.log(response)
+      // response.json().then((jsonResponse) => {
+      //   self.clients.matchAll().then((clients) => {
+      //     clients.postMessage(
+      //       JSON.stringify({
+      //         type: response.url,
+      //         data: jsonResponse.data,
+      //       })
+      //     );
+      //   });
+      //   return jsonResponse.data;
+      // })
     ); // resolve promise with the Response object
 }
 
