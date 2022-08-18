@@ -10,8 +10,7 @@ import axios from "axios";
 
 let config = {
   baseURL: 'https://dolphin-app-o4fcf.ondigitalocean.app/v1',
-  
-
+  // baseURL: 'http://localhost:8000/v1'
 
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
   // timeout: 60 * 1000, // Timeout

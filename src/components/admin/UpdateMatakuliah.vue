@@ -103,8 +103,9 @@ export default {
               text: responses.message,
               type: 'success'
             })
-            this.close()
             this.$root.$emit('matakuliah-view')
+            this.close()
+            this.$router.go(0)
           }
         })
         .catch((err) => {
@@ -116,9 +117,10 @@ export default {
     async retrieveData() {
       this.kode = '',
       this.matakuliah = '',
-      await this.axios.get('/matakuliah/' + this.id) 
+      await this.axios.get('/matakuliah/detail/' + this.id) 
       .then((res) => {
         const response = res.data.matkul
+        console.log(response)
         this.kode = response[0].kode
         this.matakuliah = response[0].matakuliah
         

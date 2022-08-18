@@ -12,6 +12,15 @@ Vue.config.productionTip = false;
 
 SchemaSyncHandler.sync();
 
+// navigator.serviceWorker.onmessage = event => {
+// 	const message = JSON.parse(event.data);
+//   console.log(message)
+// 	// if(message && message.type.includes("/api/users")){
+// 	// 	console.log("List of attendees to date", message.data)
+// 	// 	renderAttendees(message.data)
+// 	// }
+// }
+
 new Vue({
   router,
   store,

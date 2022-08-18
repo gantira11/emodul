@@ -1,14 +1,12 @@
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
   transpileDependencies: ["vuetify"],
-  configureWebpack: {
-    devServer: {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-      proxy: "https://dolphin-app-o4fcf.ondigitalocean.app",
-    },
-  },
+  // devServer: {
+  //   headers: {
+  //     "Access-Control-Allow-Origin": "*",
+  //   },
+  //   proxy: "https://cors-anywhere.herokuapp.com/",
+  // },
   pwa: {
     workboxPluginMode: "InjectManifest",
     workboxOptions: {

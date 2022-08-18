@@ -114,7 +114,7 @@ export default {
       }
     },
     async retrieveData() {
-      await this.axios.get('/prodi/' + this.id)
+      await this.axios.get('/prodi/detail/' + this.id)
       .then((res) => {
         this.jenjang = res.data.data.jenjang,
         this.prodi = res.data.data.prodi

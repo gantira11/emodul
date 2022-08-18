@@ -164,7 +164,6 @@ export default {
 
     },
     fieldClear() {
-
       this.files = [];
     },
     submit() {
