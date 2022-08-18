@@ -103,8 +103,9 @@ export default {
               text: response_data.message,
               type: 'success'
             })
-            this.close()
-            this.$root.$emit('prodi-view')
+            this.$router.go(0)
+            // this.close()
+            // this.$root.$emit('prodi-view')
           }
         })
         .catch((error) => {
