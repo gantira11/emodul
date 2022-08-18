@@ -174,10 +174,9 @@ export default {
               text: responses.message,
               type: 'success'
             })
+            this.$root.$emit('user-view')
+            this.close()
             this.$router.go(0)
-
-            // this.close()
-            // this.$root.$emit('user-view')
           }
         })
         .catch((err) => {

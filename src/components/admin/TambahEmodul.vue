@@ -113,24 +113,12 @@ export default {
       files: [],
 
       // Validation
-      rulesTitle: [
-        v => !!v || 'Title harus diisi'
-      ],
-      rulesDeskripsi: [
-        v => !!v || 'Deskripsi harus diisi'
-      ],
-      rulesDosen: [
-        v => !!v || 'Dosen harus diisi'
-      ],
-      rulesProdi: [
-        v => !!v || 'Prodi harus diisi'
-      ],
-      rulesMatkul: [
-        v => !!v || 'Matkul harus diisi'
-      ],
-      rulesFile: [
-        v => !!v || 'File harus diisi'
-      ],
+      rulesTitle: [(v) => !!v || "Title harus diisi"],
+      rulesDeskripsi: [(v) => !!v || "Deskripsi harus diisi"],
+      rulesDosen: [(v) => !!v || "Dosen harus diisi"],
+      rulesProdi: [(v) => !!v || "Prodi harus diisi"],
+      rulesMatkul: [(v) => !!v || "Matkul harus diisi"],
+      rulesFile: [(v) => !!v || "File harus diisi"],
     };
   },
   computed: {
@@ -161,13 +149,12 @@ export default {
       for (let i = 0; i < selectedFiles.length; i++) {
         this.files.push(selectedFiles[i]);
       }
-
     },
     fieldClear() {
       this.files = [];
     },
     submit() {
-      if(this.$refs.form.validate()) {
+      if (this.$refs.form.validate()) {
         if (this.files) {
           let formData = new FormData();
           formData.append("title", this.title);
@@ -179,21 +166,20 @@ export default {
             formData.append("module[]", this.files[i]);
           }
 
-  
           this.axios
             .post("/emodul", formData)
             .then((res) => {
               let response = res.data;
-              if(response) {
+              if (response) {
                 this.setAlert({
                   status: true,
                   text: response.message,
-                  type: 'success',
-                })
-            this.$router.go(0)
+                  type: "success",
+                });
 
-                // this.$root.$emit('emodul-view')
-                // this.close()
+                this.$root.$emit('emodul-view')
+                this.close()
+                this.$router.go(0);
               }
             })
             .catch((err) => {

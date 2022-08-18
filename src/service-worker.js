@@ -15,7 +15,7 @@ self.addEventListener("fetch", (evt) => {
       );
     })
   );
-  
+
   evt.waitUntil(update(evt.request));
 });
 
@@ -25,29 +25,41 @@ const delay = (ms) => (_) =>
 function update(request) {
   return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`)
     .then(delay(1000))
-    .then( async (response) => {
-      console.log('Cache :' + response);
+    .then(async (response) => {
+      console.log("Cache :" + response);
       const cache = await caches.open("dynamicCache");
       cache.put(request.url, response.clone()); // we can put response in cache
     })
-    .then((response) => response); // resolve promise with the Response object
+    .then((response) =>
+      response.json().then((jsonResponse) => {
+        self.clients.matchAll().then((clients) => {
+          clients.postMessage(
+            JSON.stringify({
+              type: response.url,
+              data: jsonResponse.data,
+            })
+          );
+        });
+        return jsonResponse.data;
+      })
+    ); // resolve promise with the Response object
 }
 
 // function refresh(response) {
-  // console.log(response);
-  // return JSON.parse(response) // read and parse JSON response
-  //   .then((jsonResponse) => {
-  //     self.clients.matchAll().then((clients) => {
-  //       clients.forEach((client) => {
-  //         // report and send new data to client
-  //         client.postMessage(
-  //           JSON.stringify({
-  //             type: response.url,
-  //             data: jsonResponse.data,
-  //           })
-  //         );
-  //       });
-  //     });
-  //     return jsonResponse.data; // resolve promise with new data
-  //   });
+// console.log(response);
+// return JSON.parse(response) // read and parse JSON response
+//   .then((jsonResponse) => {
+//     self.clients.matchAll().then((clients) => {
+//       clients.forEach((client) => {
+//         // report and send new data to client
+//         client.postMessage(
+//           JSON.stringify({
+//             type: response.url,
+//             data: jsonResponse.data,
+//           })
+//         );
+//       });
+//     });
+//     return jsonResponse.data; // resolve promise with new data
+//   });
 // }

@@ -45,9 +45,9 @@ export default {
               text: responses.message,
               type: "success",
             });
+            this.$root.$emit("matakuliah-view");
+            this.close();
             this.$router.go(0);
-            // this.close();
-            // this.$root.$emit("matakuliah-view");
           }
         })
         .catch((err) => {

@@ -63,10 +63,10 @@ export default {
             text: response.data.message,
             type: 'success'
           })
-            this.$router.go(0)
+          this.$root.$emit('prodi-view')
+          this.close()
+          this.$router.go(0)
 
-          // this.close()
-          // this.$root.$emit('prodi-view')
 
         }
       })

@@ -67,10 +67,10 @@ export default {
             text: response.message,
             type: 'success',
           })
-            this.$router.go(0)
+          this.$root.$emit('emodul-view')
+          this.close(),
+          this.$router.go(0)
 
-          // this.close(),
-          // this.$root.$emit('emodul-view')
         }
       })
     }
