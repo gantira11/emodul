@@ -4,6 +4,19 @@ precacheAndRoute(self.__WB_MANIFEST);
 
 self.addEventListener("fetch", (evt) => {
   if (evt.request.url.includes("/v1/")) {
+    evt.respondWith(
+      caches.match(evt.request).then((cacheRes) => {
+        return (
+          cacheRes ||
+          fetch(evt.request).then(async (fetchRes) => {
+            const cache = await caches.open("dynamicCache");
+            cache.put(evt.request.url, fetchRes.clone());
+            return fetchRes;
+          })
+        );
+      })
+    );
+    
     evt.waitUntil(update(evt.request).then(refresh));
   } else {
     evt.respondWith(
