@@ -96,9 +96,9 @@ export default {
   name: 'emodul-view',
   data() {
     return {
+      emoduls: [],
       search: '',
       itemPerPage: 5,
-      emoduls: [],
       headers: [
         { text: 'Title', value: 'title' },
         { text: 'Deskripsi', value: 'deskripsi' },
