@@ -17,7 +17,7 @@ self.addEventListener("fetch", (evt) => {
       })
     );
 
-    evt.waitUntil(update(evt.request).then(refresh));
+    evt.waitUntil(update(evt.request));
   } else {
     evt.respondWith(
       caches.match(evt.request).then((cacheRes) => {
@@ -47,21 +47,21 @@ function update(request) {
     }); // resolve promise with the Response object
 }
 
-function refresh(response) {
-  return response
-    .jsonResponse() // read and parse JSON response
-    .then((jsonResponse) => {
-      self.clients.matchAll().then((clients) => {
-        clients.forEach((client) => {
-          // report and send new data to client
-          client.postMessage(
-            JSON.stringify({
-              type: response.url,
-              data: jsonResponse.data,
-            })
-          );
-        });
-      });
-      return jsonResponse.data; // resolve promise with new data
-    });
-}
+// function refresh(response) {
+//   return response
+//     .jsonResponse() // read and parse JSON response
+//     .then((jsonResponse) => {
+//       self.clients.matchAll().then((clients) => {
+//         clients.forEach((client) => {
+//           // report and send new data to client
+//           client.postMessage(
+//             JSON.stringify({
+//               type: response.url,
+//               data: jsonResponse.data,
+//             })
+//           );
+//         });
+//       });
+//       return jsonResponse.data; // resolve promise with new data
+//     });
+// }
