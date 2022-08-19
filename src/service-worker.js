@@ -16,7 +16,7 @@ self.addEventListener("fetch", (evt) => {
         );
       })
     );
-    
+
     evt.waitUntil(update(evt.request).then(refresh));
   } else {
     evt.respondWith(
@@ -48,7 +48,8 @@ function update(request) {
 }
 
 function refresh(response) {
-  return JSON.parse(response) // read and parse JSON response
+  return response
+    .jsonResponse() // read and parse JSON response
     .then((jsonResponse) => {
       self.clients.matchAll().then((clients) => {
         clients.forEach((client) => {
