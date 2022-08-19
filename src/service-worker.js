@@ -9,7 +9,6 @@ self.addEventListener("fetch", (evt) => {
         return (
           cacheRes ||
           fetch(evt.request).then(async (fetchRes) => {
-            console.log(fetchRes)
             const cache = await caches.open("dynamicCache");
             cache.put(evt.request.url, fetchRes.clone());
             return fetchRes;
@@ -25,7 +24,6 @@ self.addEventListener("fetch", (evt) => {
         return (
           cacheRes ||
           fetch(evt.request).then(async (fetchRes) => {
-            console.log(fetchRes)
             const cache = await caches.open("dynamicCache");
             cache.put(evt.request.url, fetchRes.clone());
             return fetchRes;
@@ -41,7 +39,7 @@ const delay = (ms) => (_) =>
 
 function update(request) {
   return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`)
-    .then(delay(1000))
+    .then(delay(500))
     .then(async (response) => {
       const cache = await caches.open("dynamicCache");
       cache.put(request.url, response.clone()); // we can put response in cache

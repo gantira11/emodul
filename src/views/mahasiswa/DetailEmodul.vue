@@ -59,7 +59,6 @@ export default {
         .get("emodul/" + this.$route.params.slug)
         .then((res) => {
           this.emodul = res.data.data[0];
-          // console.log(this.emodul);
         })
         .catch((err) => {
           console.error(err);
