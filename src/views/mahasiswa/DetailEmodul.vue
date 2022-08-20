@@ -2,11 +2,8 @@
   <v-container class="my-4 d-flex justify-center flex-column">
     <v-card class="px-4 py-3 mb-5">
       <template v-if="emodul == null">
-        <div class="d-flex justify-space-between">
+        <div class="d-flex justify-center">
           <h1 class="text-h6">Emodul tidak ditemukan</h1>
-          <v-btn icon @click="deleteBookmark()">
-            <v-icon color="blue" size="26">md mdi-bookmark</v-icon>
-          </v-btn>
         </div>
       </template>
       <template v-else>
@@ -96,25 +93,6 @@ export default {
           });
           console.log(objectStore);
         };
-      });
-    },
-
-    async deleteBookmark(id) {
-      return new Promise((resolve) => {
-        let trans = this.db.transaction(["bookmark"], "readwrite");
-        trans.oncomplete = (e) => {
-          this.setAlert({
-            status: true,
-            text: "Berhasil disimpan di bookmark",
-            type: "success",
-          });
-          console.log(e);
-          resolve();
-          this.$router.back();
-        };
-
-        let store = trans.objectStore("bookmark");
-        store.delete(id);
       });
     },
 

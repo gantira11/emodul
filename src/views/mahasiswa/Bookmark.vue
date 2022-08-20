@@ -141,4 +141,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.apparance-none {
+  text-decoration: none !important;
+}
+</style>
