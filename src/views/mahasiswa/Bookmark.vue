@@ -65,6 +65,7 @@ export default {
             autoIncrement: true,
             keyPath: "id",
           });
+          console.log(objectStore);
         };
       });
     },
