@@ -14,12 +14,39 @@
           md="6"
           lg="4"
         >
-          <CardContent
-            :title="`${emodul.title} | ${emodul.dosen}`"
-            :body="`${emodul.deskripsi}`"
-            :route="`${emodul.slug}`"
-            btnText="Lihat Details Emodul"
-          />
+          <v-card>
+            <v-img
+              src="../../assets/images/card_img.webp"
+              height="100"
+              contain
+            ></v-img>
+            <v-card-title class="text-body-2">
+              {{ emodul.title }}, {{ emodul.dosen }}
+            </v-card-title>
+            <v-card-subtitle 
+              class="text--primary text-caption pb-0"
+            >
+              {{ emodul.deskripsi }}
+            </v-card-subtitle>
+            <v-card-actions 
+              class="d-flex justify-end ma-none"
+            >
+              <router-link 
+                class="apparance-none" 
+                :to="emodul.slug"
+              >
+                <v-btn class="text-caption" color="primary" text>
+                  Lihat detail Emodul
+                </v-btn>
+              </router-link>
+              <v-btn 
+                class="text-caption" 
+                color="primary" 
+                text
+                @click='deleteBookmark(emodul.id)'
+              >Hapus</v-btn>
+            </v-card-actions>
+          </v-card>
         </v-col>
       </v-row>
     </v-card>
@@ -27,7 +54,7 @@
 </template>
 
 <script>
-import CardContent from "@/components/mahasiswa/CardContent.vue";
+import { mapActions } from 'vuex'
 
 export default {
   name: "BookarkView",
@@ -37,14 +64,14 @@ export default {
       db: null,
     };
   },
-  components: {
-    CardContent,
-  },
   async created() {
     this.db = await this.getDb();
     this.getBookmark();
   },
   methods: {
+    ...mapActions({
+      setAlert: 'alert/set'
+    }),
     async getDb() {
       return new Promise((resolve, reject) => {
         let request = window.indexedDB.open("emoduls", 1);
@@ -90,6 +117,24 @@ export default {
             cursor.continue();
           }
         };
+      });
+    },
+    async deleteBookmark(id) {
+      return new Promise((resolve) => {
+        let trans = this.db.transaction(["bookmark"], "readwrite");
+        trans.oncomplete = (e) => {
+          this.setAlert({
+            status: true,
+            text: "Berhasil dihapus",
+            type: "success",
+          });
+          console.log(e);
+          resolve();
+          this.$router.go(0);
+        };
+
+        let store = trans.objectStore("bookmark");
+        store.delete(id);
       });
     },
   },

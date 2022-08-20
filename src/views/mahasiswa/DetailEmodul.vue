@@ -1,33 +1,43 @@
 <template>
   <v-container class="my-4 d-flex justify-center flex-column">
     <v-card class="px-4 py-3 mb-5">
-      <div class="d-flex justify-space-between">
-        <h1 class="text-h6">{{ emodul.title }}</h1>
-        <v-btn icon @click="addBookmark">
-          <v-icon color="blue" size="26">md mdi-bookmark</v-icon>
-        </v-btn>
-      </div>
-      <h1 class="text-body-1 font-weight-light pt-1">
-        Oleh : {{ emodul.dosen }}
-      </h1>
-      <v-divider class="mt-2 mb-3"></v-divider>
-      <h5 class="text-body-1 font-weight-bold">Deskripsi :</h5>
-      <p class="">{{ emodul.deskripsi }}</p>
-      <div v-for="item in emodul.modules" :key="item.id">
-        <v-card
-          class="pa-3 d-flex align-center"
-          link
-          :to="`${emodul.slug}/${item.module}`"
-        >
-          <div class="img-doc"></div>
-          <v-card-title
-            class="text-body-2 font-weight-semibold pl-4 d-flex flex-wrap"
-            >{{ item.module }}</v-card-title
+      <template v-if="emodul == null">
+        <div class="d-flex justify-space-between">
+          <h1 class="text-h6">Emodul tidak ditemukan</h1>
+          <v-btn icon @click="deleteBookmark()">
+            <v-icon color="blue" size="26">md mdi-bookmark</v-icon>
+          </v-btn>
+        </div>
+      </template>
+      <template v-else>
+        <div class="d-flex justify-space-between">
+          <h1 class="text-h6">{{ emodul.title }}</h1>
+          <v-btn icon @click="addBookmark">
+            <v-icon color="blue" size="26">md mdi-bookmark</v-icon>
+          </v-btn>
+        </div>
+        <h1 class="text-body-1 font-weight-light pt-1">
+          Oleh : {{ emodul.dosen }}
+        </h1>
+        <v-divider class="mt-2 mb-3"></v-divider>
+        <h5 class="text-body-1 font-weight-bold">Deskripsi :</h5>
+        <p class="">{{ emodul.deskripsi }}</p>
+        <div v-for="item in emodul.modules" :key="item.id">
+          <v-card
+            class="pa-3 d-flex align-center"
+            link
+            :to="`${emodul.slug}/${item.module}`"
           >
-          <!-- <iframe :src="`${urlBE}/storage/public/emoduls/${item.module}`" frameborder="0"></iframe>
+            <div class="img-doc"></div>
+            <v-card-title
+              class="text-body-2 font-weight-semibold pl-4 d-flex flex-wrap"
+              >{{ item.module }}</v-card-title
+            >
+            <!-- <iframe :src="`${urlBE}/storage/public/emoduls/${item.module}`" frameborder="0"></iframe>
           {{ item.module }} -->
-        </v-card>
-      </div>
+          </v-card>
+        </div>
+      </template>
     </v-card>
   </v-container>
 </template>
@@ -86,6 +96,25 @@ export default {
           });
           console.log(objectStore);
         };
+      });
+    },
+
+    async deleteBookmark(id) {
+      return new Promise((resolve) => {
+        let trans = this.db.transaction(["bookmark"], "readwrite");
+        trans.oncomplete = (e) => {
+          this.setAlert({
+            status: true,
+            text: "Berhasil disimpan di bookmark",
+            type: "success",
+          });
+          console.log(e);
+          resolve();
+          this.$router.back();
+        };
+
+        let store = trans.objectStore("bookmark");
+        store.delete(id);
       });
     },
 
