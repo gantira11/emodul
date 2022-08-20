@@ -135,6 +135,7 @@ export default {
     this.retrieveMatkul()
     this.$root.$on('matakuliah-view', () => {
       this.retrieveMatkul()
+      this.$router.go(0)
     })
   }
 }
