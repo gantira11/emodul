@@ -1,18 +1,14 @@
 <template>
-  <v-app-bar app
-    color="blue darken-4 "
-    dense
-  >
-    <v-btn 
-      class="d-sm-none"
-      icon
-      @click="back"
-    >
-      <v-icon color="white">md mdi-chevron-left</v-icon>
-    </v-btn>
+  <v-app-bar app color="blue darken-4 " dense>
+    <template v-if="this.$route.name == 'program-studi'"> </template>
+    <template v-else>
+      <v-btn class="d-sm-none" icon @click="back">
+        <v-icon color="white">md mdi-chevron-left</v-icon>
+      </v-btn>
+    </template>
     <v-toolbar-title class="white--text">Emodul</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-list 
+    <v-list
       class="transparent d-none d-sm-flex px-0 py-0"
       color="#0D47A1"
       max-height="60"
@@ -22,34 +18,34 @@
         v-for="item in items"
         :key="item.title"
         class="white--text font-weight-semibold"
-        :to="{name: item.route}"
-      >{{ item.title }}</v-list-item>
-      
+        :to="{ name: item.route }"
+        >{{ item.title }}</v-list-item
+      >
     </v-list>
   </v-app-bar>
-
 </template>
 
 <script>
 export default {
-  name: 'mahasiswa-core-appbar',
-  data () {
+  name: "mahasiswa-core-appbar",
+  data() {
     return {
       items: [
-        { title: 'Homepage', route: 'program-studi' },
-        { title: 'Bookmark', route: 'bookmark' },
-        { title: 'Profile', route: 'profile' }
-      ]
-    }
+        { title: "Homepage", route: "program-studi" },
+        { title: "Bookmark", route: "bookmark" },
+        { title: "Profile", route: "profile" },
+      ],
+    };
   },
   methods: {
     back() {
-      this.$router.back()
-    }
-  }
-}
+      this.$router.back();
+    },
+  },
+  mounted() {
+    console.log(this.$route.name);
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
