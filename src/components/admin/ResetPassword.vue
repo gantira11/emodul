@@ -65,7 +65,6 @@ export default {
           })
           this.$root.$emit('user-view')
           this.close()
-          this.$router.go(0)
 
 
         }

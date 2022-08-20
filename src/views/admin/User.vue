@@ -151,6 +151,7 @@ export default {
     this.retrieveMahasiswa()
     this.$root.$on('user-view', () => {
       this.retrieveMahasiswa()
+      this.$router.go(0)
     })
   },
 }

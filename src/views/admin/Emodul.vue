@@ -141,6 +141,7 @@ export default {
     this.retrieveEmodul()
     this.$root.$on('emodul-view', () => {
       this.retrieveEmodul()
+      this.$router.go(0)
     })
   }
 }
