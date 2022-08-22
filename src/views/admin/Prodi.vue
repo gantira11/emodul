@@ -112,8 +112,7 @@ export default {
       this.axios.get('/prodi')
       .then((response) => {
         let responses = response.data.data
-          this.prodis = responses
-        
+          this.prodis = responses 
       }).catch((err) => {
         let error = err.response
         console.log(error)
@@ -138,8 +137,8 @@ export default {
   mounted() {
     this.retrieveProdi();
     this.$root.$on('prodi-view', () => {
-      // this.retrieveProdi();
-      this.$router.go(0)
+      this.retrieveProdi();
+      // this.$router.go(0)
     })
   },
 }
