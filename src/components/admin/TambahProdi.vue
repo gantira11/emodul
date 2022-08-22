@@ -93,6 +93,7 @@ export default {
           })
           .catch((error) => {
             let responses = error.response;
+            console.log(responses.data);
           });
       }
     },

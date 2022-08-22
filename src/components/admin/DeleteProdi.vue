@@ -64,8 +64,6 @@ export default {
           })
           this.$root.$emit('prodi-view')
           this.close()
-
-
         }
       })
     },

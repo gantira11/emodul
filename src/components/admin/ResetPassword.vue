@@ -64,8 +64,6 @@ export default {
           })
           this.$root.$emit('user-view')
           this.close()
-
-
         }
       })
     },

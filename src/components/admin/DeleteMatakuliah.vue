@@ -48,9 +48,6 @@ export default {
             this.close();
           }
         })
-        .catch((err) => {
-          let error = err.response;
-        });
     },
   },
 };

@@ -68,7 +68,6 @@ export default {
           })
           this.$root.$emit('emodul-view')
           this.close()
-
         }
       })
     }

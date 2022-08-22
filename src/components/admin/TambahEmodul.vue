@@ -183,9 +183,10 @@ export default {
             })
             .catch((err) => {
               let error = err.response;
+              console.log(error);
             });
         } else {
-          // Error
+          console.log("file not found");
         }
       }
     },
