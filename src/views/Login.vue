@@ -161,7 +161,7 @@ export default {
 .logo 
   width: 50px
   height: 50px
-  background: url('../assets/logo.svg') no-repeat center center
+  background: url('../assets/logo_politeknik.png') no-repeat center center
   background-size: contain
   background-position: absolute
 </style>

@@ -11,7 +11,7 @@
       </v-col>
     </v-row>
     <v-container class="mt-4">
-      <v-form lazy-validation ref="form">
+      <v-form ref="form" lazy-validation>
         <v-combobox
           dense
           class="text-body-2"

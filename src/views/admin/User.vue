@@ -67,11 +67,11 @@
             {{ item.role.role }}
           </template>
           <template v-slot:[`item.aksi`]="{ item }">
-            <v-icon class="mx-1"
+            <!-- <v-icon class="mx-1"
               aria-label="btn-edit"
               color="green"
               @click="updateUser(item.id)"
-            >md mdi-pencil</v-icon>
+            >md mdi-pencil</v-icon> -->
             <v-icon class="mx-2"
               aria-label="btn-delete"
               color="red"

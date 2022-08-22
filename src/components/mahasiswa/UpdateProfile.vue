@@ -2,7 +2,7 @@
   <v-card class="px-3 py-5">
     <v-row class="d-flex justify-space-between align-center">
       <v-col cols="9" sm="10" md="10" lg="10">
-        <v-card-title> Update User </v-card-title>
+        <v-card-title> Update Profile </v-card-title>
       </v-col>
       <v-col class="ml-9">
         <v-icon class="justify-end" size="25" @click="close">

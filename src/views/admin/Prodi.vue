@@ -138,7 +138,7 @@ export default {
   mounted() {
     this.retrieveProdi();
     this.$root.$on('prodi-view', () => {
-      this.retrieveProdi();
+      // this.retrieveProdi();
       this.$router.go(0)
     })
   },
