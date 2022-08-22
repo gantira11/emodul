@@ -34,7 +34,6 @@ export default {
       this.setStatusDialog(false);
     },
     submit() {
-      // console.log(this.id)
       this.axios
         .delete("/matakuliah/" + this.id)
         .then((response) => {
@@ -51,7 +50,6 @@ export default {
         })
         .catch((err) => {
           let error = err.response;
-          console.log(error);
         });
     },
   },

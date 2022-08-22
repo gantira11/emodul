@@ -59,7 +59,6 @@ export default {
       // console.log(this.id)
       this.axios.delete('/emodul/' + this.id)
       .then((res) => {
-        console.log(res)
         let response = res.data
         if(response) {
           this.setAlert({

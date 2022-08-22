@@ -138,7 +138,6 @@ export default {
     this.retrieveProdi();
     this.$root.$on('prodi-view', () => {
       this.retrieveProdi();
-      this.$router.go(0)
     })
   },
 }

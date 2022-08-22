@@ -56,7 +56,6 @@ export default {
       this.axios.delete('/prodi/' + this.id)
       .then((response) => {
         let responses = response.data
-        console.log(responses)
         if(responses) {
           this.setAlert({
             status: true,

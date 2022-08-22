@@ -109,7 +109,6 @@ export default {
         })
         .catch((err) => {
           let error = err.response
-          console.log(error)
         })
       }
     },

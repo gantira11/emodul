@@ -120,7 +120,7 @@ export default {
         this.prodi = res.data.data.prodi
       })
       .catch((err) => {
-        console.error(err)
+        let error = err.response
       })
     },
   },
