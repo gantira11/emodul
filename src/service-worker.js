@@ -34,8 +34,8 @@ self.addEventListener("fetch", (evt) => {
   }
 });
 
-const delay = (ms) => (_) =>
-  new Promise((resolve) => setTimeout(() => resolve(_), ms));
+// const delay = (ms) => (_) =>
+//   new Promise((resolve) => setTimeout(() => resolve(_), ms));
 
 function update(request) {
   return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`)
