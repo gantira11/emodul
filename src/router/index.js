@@ -68,7 +68,7 @@ const routes = [
       },
       {
         name: 'program-studi',
-        path: 'program-studi',
+        path: 'program-studi/',
         component: () => import('../views/mahasiswa/Prodi.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
@@ -78,17 +78,17 @@ const routes = [
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        path: 'program-studi/:slugProdi/:slug',
+        path: 'program-studi/:slugProdi/:slug/',
         component: () => import('../views/mahasiswa/Emodul.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        path: 'program-studi/:slugProdi/:slugMatkul/:slug',
+        path: 'program-studi/:slugProdi/:slugMatkul/:slug/',
         component: () => import('../views/mahasiswa/DetailEmodul.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
       {
-        path: 'program-studi/:slugProdi/:slugMatkul/:slugModule/:slug',
+        path: 'program-studi/:slugProdi/:slugMatkul/:slugModule/:slug/',
         component: () => import('../views/mahasiswa/ViewModule.vue'),
           meta: { auth: true, adminAuth: false, mahasiswaAuth: true }
       },
