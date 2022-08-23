@@ -32,7 +32,7 @@
           <CardContent 
             :title="`${emodul.title} | ${emodul.dosen}`" 
             :body="`${emodul.deskripsi}`" 
-            :route="`${matakuliah.slug}/${emodul.slug}`"
+            :route="`${matakuliah.slug}/${emodul.slug}/`"
             btnText="Lihat Details Emodul"
           />
         </v-col>
