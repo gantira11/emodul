@@ -23,7 +23,7 @@
           <v-card
             class="pa-3 d-flex align-center"
             link
-            :to="`${emodul.slug}/${item.module}`"
+            :to="`${item.module}`"
           >
             <div class="img-doc"></div>
             <v-card-title

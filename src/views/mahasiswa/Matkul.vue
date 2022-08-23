@@ -28,7 +28,7 @@
           <CardContent
             :title="matkul.matakuliah"
             :body="`Kode ` + matkul.kode"
-            :route="`${prodi.slug}/${matkul.slug}`"
+            :route="`${matkul.slug}/`"
             btnText="Lihat Semua Emodul"
           />
         </v-col>
