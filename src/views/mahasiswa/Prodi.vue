@@ -32,7 +32,7 @@
           <CardContent 
             :title="prodi.prodi" 
             :body="`Jenjang ` + prodi.jenjang" 
-            :route="`${prodi.slug}/`" 
+            :route="`program-studi/${prodi.slug}/`" 
             btnText="Lihat semua matakuliah"
           />
         </v-col>
