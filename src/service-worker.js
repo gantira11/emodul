@@ -36,9 +36,9 @@ self.addEventListener("fetch", (evt) => {
 
 // const delay = (ms) => (_) =>
 //   new Promise((resolve) => setTimeout(() => resolve(_), ms));
+let dataUser = JSON.parse(localStorage.getItem('dataUser'));
 
 function update(request) {
-  let dataUser = JSON.parse(localStorage.getItem('dataUser'));
   return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`, {
     headers: {
       'Authorization': dataUser != null ? 'Bearer ' + dataUser.token : null,

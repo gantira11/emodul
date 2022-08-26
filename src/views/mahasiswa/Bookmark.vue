@@ -16,7 +16,7 @@
         >
           <v-card>
             <v-img
-              :src="emodul.prodis.image == null ? `${beUrl}storage/images/defaultBanner.webp` : `${beUrl}storage/images/${emodul.prodis.image}`"
+              :src="emodul.prodis.image == null ? `${beUrl}/storage/images/defaultBanner.webp` : `${beUrl}/storage/images/${emodul.prodis.image}`"
               height="100"
               contain
             ></v-img>
