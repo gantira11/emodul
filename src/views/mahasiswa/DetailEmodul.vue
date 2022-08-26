@@ -6,13 +6,27 @@
           <h1 class="text-h6">Emodul tidak ditemukan</h1>
         </div>
       </template>
+
       <template v-else>
-        <div class="d-flex justify-space-between">
-          <h1 class="text-h6">{{ emodul.title }}</h1>
-          <v-btn icon @click="addBookmark">
-            <v-icon color="blue" size="26">md mdi-bookmark</v-icon>
-          </v-btn>
+        <div class="d-flex justify-space-between ">
+          <h1 class="text-h6">{{ matakuliah.matakuliah }} | {{ emodul.title }}</h1>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn 
+                icon 
+                @click="addBookmark"
+                v-bind="attrs"
+                v-on="on"
+              >
+                <v-icon color="blue" size="26">md mdi-star-outline</v-icon>
+              </v-btn>
+            </template>
+            <span>Add to bookmark</span>
+          </v-tooltip>
         </div>
+        <h1 class="text-body-2 font-weight-light">
+          {{ prodi.prodi }}
+        </h1>
         <h1 class="text-body-1 font-weight-light pt-1">
           Oleh : {{ emodul.dosen }}
         </h1>
@@ -20,11 +34,7 @@
         <h5 class="text-body-1 font-weight-bold">Deskripsi :</h5>
         <p class="">{{ emodul.deskripsi }}</p>
         <div v-for="item in emodul.modules" :key="item.id">
-          <v-card
-            class="pa-3 d-flex align-center"
-            link
-            :to="`${item.module}/`"
-          >
+          <v-card class="pa-3 d-flex align-center" link :to="`${item.module}/`">
             <div class="img-doc"></div>
             <v-card-title
               class="text-body-2 font-weight-semibold pl-4 d-flex flex-wrap"
@@ -48,6 +58,8 @@ export default {
       emodul: [],
       urlBE: "http://localhost:8000",
       emoduls: [],
+      matakuliah: [],
+      prodi: [],
       db: null,
       bookmark: [],
       ready: false,
@@ -65,7 +77,9 @@ export default {
       this.axios
         .get("emodul/" + this.$route.params.slug)
         .then((res) => {
-          this.emodul = res.data.data[0];
+          this.emodul = res.data.data[0]
+          this.prodi = res.data.data[0].prodis
+          this.matakuliah = res.data.data[0].matakuliahs
         })
         .catch((err) => {
           console.error(err);

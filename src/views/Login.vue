@@ -101,10 +101,10 @@ export default {
           'password': this.password
         }
         this.axios.post('/login', formData)
-        .then((response) => {
+        .then( async (response) => {
           let responses = response.data
           this.setAuth(responses)
-          localStorage.setItem('dataUser', JSON.stringify(this.user))
+          await localStorage.setItem('dataUser', JSON.stringify(this.user))
           
           if(this.user.user.id > 0) {
             this.setAlert({
@@ -113,19 +113,18 @@ export default {
               type: 'success'
             })
             if(this.user.user.role.role === 'Admin') {
-              this.$router.push({name: 'dashboard'})
+              this.$router.go({name: 'dashboard'})
             } else {
-              this.$router.push({name: 'program-studi'})
+              this.$router.go({name: 'program-studi'})
             }
             
           }
         })
         .catch((err) => {
           console.log(err.response)
-          let error = err.response.data.message
           this.setAlert({
             status: true,
-            text: error,
+            text: 'Username atau Password Salah',
             type: 'error'
           })
         })

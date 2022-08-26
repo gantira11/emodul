@@ -82,6 +82,12 @@
               color="red"
               @click="deleteEmodul(item.id)"
             >md mdi-delete</v-icon>
+            <router-link :to="{ path: 'detail-emodul/' + item.slug }" class="router-link">
+              <v-icon class="mx-4"
+                aria-label="btn-delete"
+                color="blue"
+              >md mdi-eye</v-icon>
+            </router-link>
           </template>
         </v-data-table>
       </v-card>

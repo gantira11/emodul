@@ -22,13 +22,27 @@ const routes = [
         path: 'dashboard/',
         component: () => import('../views/admin/Dashboard.vue'),
           meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
-
+      },
+      {
+        path: 'dashboard/:slug',
+        component: () => import('../views/admin/ProdiEmodul.vue'),
+          meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
       },
       {
         name: 'emoduls',
         path: 'emoduls/',
         component: () => import('../views/admin/Emodul.vue'),
           meta: { auth: true, adminAuth: true, mahasiswaAuth: false }
+      },
+      {
+        path: 'detail-emodul/:slug',
+        component: () => import('../views/admin/EmodulDetail.vue'),
+          meta: { auth: true, adminAuth: true, mahasiswaAuth: false },
+      },
+      {
+        path: 'view-emodul/:slug',
+        component: () => import('../views/admin/ModuleView.vue'),
+          meta: { auth: true, adminAuth: true, mahasiswaAuth: false },
       },
       {
         name: 'users',

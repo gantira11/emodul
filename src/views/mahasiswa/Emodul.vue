@@ -30,6 +30,7 @@
           lg="4"
         >
           <CardContent 
+            :image="matakuliah.prodis.image != null ? `${beUrl}/storage/images/${matakuliah.prodis.image}` : `${beUrl}/storage/images/defaultBanner.webp`"
             :title="`${emodul.title} | ${emodul.dosen}`" 
             :body="`${emodul.deskripsi}`" 
             :route="`${emodul.slug}/`"
@@ -54,23 +55,7 @@ export default {
       emoduls: [],
       slugProdi: '',
       slugMatkul: '',
-      items: [
-        {
-          text: 'Program Studi'.toUpperCase(),
-          disabled: false,
-          to: 'program-studi'
-        },
-        {
-          text: `${ this.$route.params.slugProdi }`.toUpperCase(),
-          disabled: false,
-          // href: `../${ this.$route.params.slugProdi }`,
-          to: 'matakuliah'
-        },
-        {
-          text: `${ this.$route.params.slug }`.toUpperCase(),
-          disabled: true
-        }
-      ],
+      beUrl: process.env.VUE_APP_BACKEND
     }
   },
   components: {
@@ -89,7 +74,6 @@ export default {
       .then((res) => {
         this.matakuliah = res.data.data[0]
         this.emoduls = res.data.data[0].emoduls
-        this.items[2].title = res.data.data[0].matakuliah
       })
     }
   },

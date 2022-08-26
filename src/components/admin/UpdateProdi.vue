@@ -37,6 +37,13 @@
           color="grey darken-2"
           outlined
         ></v-text-field>
+        <v-file-input
+          label='Banner Prodi'
+          small-chips
+          outlined
+          dense
+          @change="fieldChange"
+        ></v-file-input>
         <div class="d-flex justify-end">
           <v-btn
             class="justify-end text-body-2"
@@ -64,6 +71,8 @@ export default {
         'D4'
       ],
       prodi: '',
+      currentImage: '',
+      image: null,
 
       // va lidation
       rulesJenjang: [
@@ -87,13 +96,22 @@ export default {
     close() {
       this.setStatusDialog(false)
     },
+    fieldChange(event) {
+      let files = event
+      this.image = files
+      console.log(this.image); 
+    },
     submit() {
       if(this.$refs.form.validate()) {
-        let formData = {
-          'jenjang': this.jenjang,
-          'prodi': this.prodi
-        }
-        this.axios.put('/prodi/' + this.id, formData)
+        // let formData = {
+        //   'jenjang': this.jenjang,
+        //   'prodi': this.prodi
+        // }
+        let formData = new FormData();
+        formData.append('jenjang', this.jenjang);
+        formData.append('prodi', this.prodi);
+        formData.append('image', this.image == null ? this.currentImage : this.image)
+        this.axios.post('/prodi/' + this.id, formData)
         .then((response) => {
           let response_data = response.data
           console.log(response_data)
@@ -118,6 +136,8 @@ export default {
       .then((res) => {
         this.jenjang = res.data.data.jenjang,
         this.prodi = res.data.data.prodi
+        this.currentImage = res.data.data.image
+        console.log(this.currentImage)
       })
       .catch((err) => {
         console.error(err)

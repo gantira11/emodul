@@ -96,9 +96,9 @@ export default {
       search: "",
       itemPerPage: 5,
       headers: [
-        { text: 'Jenjang', value: 'jenjang', width: 200 },
+        { text: 'Jenjang', value: 'jenjang' },
         { text: 'Program Studi', value: 'prodi' },
-        { text: 'Aksi', align: 'center', value: 'aksi', width: 200 }
+        { text: 'Aksi', align: 'center', value: 'aksi' }
       ]
     }
   },

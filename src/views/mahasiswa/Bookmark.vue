@@ -16,15 +16,20 @@
         >
           <v-card>
             <v-img
-              src="../../assets/images/card_img.webp"
+              :src="emodul.prodis.image == null ? `${beUrl}storage/images/defaultBanner.webp` : `${beUrl}storage/images/${emodul.prodis.image}`"
               height="100"
               contain
             ></v-img>
             <v-card-title class="text-body-2">
-              {{ emodul.title }}, {{ emodul.dosen }}
+              {{ emodul.title }} | {{ emodul.dosen }}
             </v-card-title>
             <v-card-subtitle 
               class="text--primary text-caption pb-0"
+            >
+              {{ emodul.matakuliahs.matakuliah }}
+            </v-card-subtitle>
+            <v-card-subtitle  
+              class="text--primary text-caption pb-0 pt-1"
             >
               {{ emodul.deskripsi }}
             </v-card-subtitle>
@@ -62,6 +67,7 @@ export default {
     return {
       emoduls: [],
       db: null,
+      beUrl: process.env.VUE_APP_BACKEND
     };
   },
   async created() {

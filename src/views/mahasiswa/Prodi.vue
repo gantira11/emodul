@@ -31,6 +31,7 @@
         >
           <CardContent 
             :title="prodi.prodi" 
+            :image="prodi.image != null ? `${beUrl}/storage/images/${prodi.image}` : `${beUrl}/storage/images/defaultBanner.webp`"
             :body="`Jenjang ` + prodi.jenjang" 
             :route="`program-studi/${prodi.slug}/`" 
             btnText="Lihat semua matakuliah"
@@ -51,6 +52,8 @@ export default {
     return {
       search: '',
       prodis: [],
+      beUrl: process.env.VUE_APP_BACKEND,
+
     }
   },
   components: {

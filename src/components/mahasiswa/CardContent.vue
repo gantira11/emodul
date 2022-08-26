@@ -1,9 +1,8 @@
 <template>
   <v-card>
     <v-img
-      src="../../assets/images/card_img.webp"
-      height="100"
-      contain
+      :src="image"
+      max-height="150"
     ></v-img>
     <v-card-title class="text-body-2">
       {{ title }}
@@ -34,7 +33,8 @@ export default {
     title: String,
     body: String,
     route: String,
-    btnText: String
+    btnText: String,
+    image: String,
   }
 }
 </script>

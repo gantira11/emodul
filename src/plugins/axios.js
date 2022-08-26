@@ -5,7 +5,8 @@ import axios from "axios";
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+let dataUser = JSON.parse(localStorage.getItem('dataUser'));
+axios.defaults.headers.common['Authorization'] = dataUser != null  ?'Bearer ' + dataUser.token : '';
 // axios.defaults.headers.post['Content-Type'] = 'multipart/form-data; boundary=<calculated when request is sent>';
 
 let config = {

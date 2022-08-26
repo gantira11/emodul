@@ -26,6 +26,7 @@
           lg="4"
         >
           <CardContent
+            :image="prodi.image != null ? `${beUrl}/storage/images/${prodi.image}` : `${beUrl}/storage/images/defaultBanner.webp`"
             :title="matkul.matakuliah"
             :body="`Kode ` + matkul.kode"
             :route="`${matkul.slug}/`"
@@ -47,6 +48,7 @@ export default {
       search: "",
       prodi: [],
       matakuliahs: [],
+      beUrl: process.env.VUE_APP_BACKEND,
     };
   },
   components: {
