@@ -38,7 +38,12 @@ self.addEventListener("fetch", (evt) => {
 //   new Promise((resolve) => setTimeout(() => resolve(_), ms));
 
 function update(request) {
-  return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`)
+  let dataUser = JSON.parse(localStorage.getItem('dataUser'));
+  return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`, {
+    headers: {
+      'Authorization': dataUser != null ? 'Bearer ' + dataUser.token : null,
+    }
+  })
     .then(async (response) => {
       const cache = await caches.open("dynamicCache");
       cache.put(request.url, response.clone()); // we can put response in cache
