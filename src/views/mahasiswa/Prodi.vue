@@ -53,7 +53,6 @@ export default {
       search: '',
       prodis: [],
       beUrl: process.env.VUE_APP_BACKEND,
-
     }
   },
   components: {
