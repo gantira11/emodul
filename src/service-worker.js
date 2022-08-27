@@ -16,7 +16,7 @@ self.addEventListener("fetch", (evt) => {
         );
       })
     );
-    
+
     evt.waitUntil(update(evt.request));
   } else {
     evt.respondWith(
@@ -36,19 +36,16 @@ self.addEventListener("fetch", (evt) => {
 
 // const delay = (ms) => (_) =>
 //   new Promise((resolve) => setTimeout(() => resolve(_), ms));
-let dataUser = JSON.parse(localStorage.getItem('dataUser'));
+// let dataUser = JSON.parse(localStorage.getItem('dataUser'));
 
 function update(request) {
-  return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`, {
-    headers: {
-      'Authorization': dataUser != null ? 'Bearer ' + dataUser.token : null,
-    }
-  })
-    .then(async (response) => {
+  return fetch(request.url + `?per_page=${Math.ceil(Math.random() * 10)}`).then(
+    async (response) => {
       const cache = await caches.open("dynamicCache");
       cache.put(request.url, response.clone()); // we can put response in cache
-      return response
-    }) // resolve promise with the Response object
+      return response;
+    }
+  ); // resolve promise with the Response object
 }
 
 // function refresh(response) {
