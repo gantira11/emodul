@@ -1,6 +1,6 @@
 <template>
   <v-footer
-    class="d-xs-block d-sm-none"
+    class="d-xs-block d-sm-none mb-3"
     fixed
   >
     <v-row class="d-flex justify-center">

@@ -37,7 +37,7 @@
           </v-text-field>
         </v-card-title>
 
-        <div v-for="item in emoduls" :key="item.id">
+        <div v-for="item in filteredList" :key="item.id">
           <v-card class="pa-3 d-flex align-center mx-2 mb-3" link :to="{ path: '../detail-emodul/' + item.slug }">
             <div class="img-doc"></div>
             <v-card-title
@@ -62,12 +62,19 @@ export default {
       search: "",
     };
   },
+  computed: {
+    filteredList() {
+      return this.emoduls.filter(emodul => {
+        return emodul.matakuliahs.matakuliah.toLowerCase().includes(this.search.toLowerCase()) || emodul.title.toLowerCase().includes(this.search.toLowerCase());
+      })
+    }
+  },
   methods: {
     retrieveEmodul() {
       this.axios.get("/emodul-prodi/" + this.$route.params.slug).then((res) => {
         this.prodi = res.data.data[0]
         this.emoduls = res.data.data[0].emoduls
-        console.log(this.prodi)
+        console.log(this.emoduls)
       });
     },
   },

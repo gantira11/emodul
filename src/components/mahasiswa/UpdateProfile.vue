@@ -12,30 +12,6 @@
     </v-row>
     <v-container class="mt-4">
       <v-form ref="form" lazy-validation>
-        <!-- <v-row class="mb-n4">
-          <v-col cols="5">
-            <v-text-field
-              class="text-body-2"
-              dense
-              v-model="nomor_induk"
-              :rules="niRules"
-              label="NIM"
-              color="grey darken-2"
-              outlined
-            ></v-text-field>
-          </v-col>
-          <v-col cols="7">
-            <v-text-field
-              class="text-body-2"
-              dense
-              v-model="nama_lengkap"
-              :rules="nlRules"
-              label="Nama Lengkap"
-              color="grey darken-2"
-              outlined
-            ></v-text-field>
-          </v-col>
-        </v-row> -->
         <v-text-field
           class="text-body-2"
           dense
@@ -51,38 +27,15 @@
           v-model="password"
           :rules="passwordRules"
           label="Password"
-          type="password"
           color="grey darken-2"
           outlined
-        ></v-text-field>
-        <!-- <v-row>
-          <v-col>
-            <v-combobox
-              v-model="selectProdi"
-              label="Program Studi"
-              dense
-              outlined
-              :items="prodis"
-              :rules="prodiRules"
-              item-value="id"
-              item-text="prodi"
-            >
-            </v-combobox>
-          </v-col>
-          <v-col>
-            <v-combobox
-              v-model="selectRole"
-              label="Role"
-              dense
-              outlined
-              :items="roles"
-              :rules="roleRules"
-              item-value="id"
-              item-text="role"
-            >
-            </v-combobox>
-          </v-col>
-        </v-row> -->
+          :type="!showPassword ? 'password' : 'text'"
+        >
+          <template v-slot:append>
+            <v-icon @click="showPassword = !showPassword">{{!showPassword ? 'md visibility' : 'md visibility_off'}}</v-icon>
+          </template>
+        </v-text-field>
+
         <div class="d-flex justify-end">
           <v-btn
             class="justify-end text-body-2"
@@ -105,6 +58,7 @@ export default {
   name: 'UpdateProfile',
   data() {
     return {
+      showPassword: false,
       nomor_induk: '',
       nama_lengkap: '',
       username: '',
