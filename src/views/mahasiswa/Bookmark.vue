@@ -18,7 +18,7 @@
             <v-img
               :src="emodul.prodis.image == null ? `${beUrl}/storage/images/defaultBanner.webp` : `${beUrl}/storage/images/${emodul.prodis.image}`"
               height="100"
-              contain
+              cover
             ></v-img>
             <v-card-title class="text-body-2">
               {{ emodul.title }} | {{ emodul.dosen }}

@@ -3,7 +3,7 @@
     <v-img
       :src="image"
       max-height="150"
-      contain
+      cover
     ></v-img>
     <v-card-title class="text-body-2">
       {{ title }}
