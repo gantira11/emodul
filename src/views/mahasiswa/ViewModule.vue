@@ -16,8 +16,7 @@ export default {
   name: "ViewModule",
   data() {
     return {
-      backendPath: "https://dolphin-app-o4fcf.ondigitalocean.app",
-      // backendPath: "http://localhost:8000",
+      backendPath: process.env.VUE_APP_BACKEND,
       modulePath: "",
     };
   },
@@ -28,16 +27,13 @@ export default {
     openHandler(pdfApp) {
       window._pdfApp = pdfApp;
     },
-    getPdf() {
-      
-    }
   },
   mounted() {
-    // console.log(this.$route.params);
-    // console.log(this.beckendPath);
     this.getPdf();
   },
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

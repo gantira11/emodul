@@ -39,6 +39,7 @@
         ></v-text-field>
         <v-file-input
           label='Banner Prodi'
+          accept="image/png, image/jpeg, image/bmp"
           small-chips
           outlined
           dense

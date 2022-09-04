@@ -77,17 +77,31 @@
             {{ item.modules.length }}
           </template>
           <template v-slot:[`item.aksi`]="{ item }">
-            <v-icon class="mx-4"
-              aria-label="btn-delete"
-              color="red"
-              @click="deleteEmodul(item.id)"
-            >md mdi-delete</v-icon>
-            <router-link :to="{ path: 'detail-emodul/' + item.slug }" class="router-link">
-              <v-icon class="mx-4"
-                aria-label="btn-delete"
-                color="blue"
-              >md mdi-eye</v-icon>
-            </router-link>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <router-link :to="{ path: 'detail-emodul/' + item.slug }" class="router-link">
+                  <v-icon
+                    aria-label="btn-delete"
+                    color="blue"
+                    v-bind="attrs"
+                    v-on="on"
+                  >md mdi-eye</v-icon>
+                </router-link>
+              </template>
+              <span>Detail</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon class="mx-4"
+                  aria-label="btn-delete"
+                  color="red"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="deleteEmodul(item.id)"
+                >md mdi-delete</v-icon>
+              </template>
+              <span>Delete</span>
+            </v-tooltip>
           </template>
         </v-data-table>
       </v-card>

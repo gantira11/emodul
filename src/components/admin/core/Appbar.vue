@@ -9,7 +9,7 @@
       icon
       @click="setSideBar(!sideBar)"
     >
-      <v-icon>{{sideBar ? 'md mdi-dots-vertical' : 'md mdi-chevron-left'}}</v-icon>
+      <v-icon>{{sideBar ? 'md mdi-menu' : 'md mdi-chevron-left'}}</v-icon>
     </v-btn>
 
 	</v-app-bar>

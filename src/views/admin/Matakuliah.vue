@@ -64,16 +64,30 @@
             {{ item.prodis.prodi }}
           </template>
           <template v-slot:[`item.aksi`]="{ item }">
-            <v-icon class="mx-1"
-              aria-label="btn-edit"
-              color="green"
-              @click="updateMatkul(item.id)"
-            >md mdi-pencil</v-icon>
-            <v-icon class="mx-4"
-              aria-label="btn-delete"
-              color="red"
-              @click="deleteMatkul(item.id)"
-            >md mdi-delete</v-icon>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon class="mx-1"
+                  aria-label="btn-edit"
+                  color="green"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="updateMatkul(item.id)"
+                >md mdi-pencil</v-icon>
+              </template>
+              <span>Update</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon class="mx-4"
+                  aria-label="btn-delete"
+                  color="red"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="deleteMatkul(item.id)"
+                >md mdi-delete</v-icon>
+              </template>
+              <span>Delete</span>
+            </v-tooltip>
           </template>
         </v-data-table>
       </v-card>

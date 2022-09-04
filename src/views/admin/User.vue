@@ -72,16 +72,30 @@
               color="green"
               @click="updateUser(item.id)"
             >md mdi-pencil</v-icon> -->
-            <v-icon class="mx-2"
-              aria-label="btn-delete"
-              color="red"
-              @click="deleteUser(item.id)"
-            >md mdi-delete</v-icon>
-            <v-icon class="mx-1"
-              aria-label="btn-delete"
-              color="blue"
-              @click="resetPassword(item.id)"
-            >md mdi-backup-restore</v-icon>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon class="mx-1"
+                  aria-label="btn-delete"
+                  color="blue"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="resetPassword(item.id)"
+                >md mdi-backup-restore</v-icon>
+              </template>
+              <span>Reset Password</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon class="mx-2"
+                  aria-label="btn-delete"
+                  color="red"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="deleteUser(item.id)"
+                >md mdi-delete</v-icon>
+              </template>
+              <span>Delete</span>
+            </v-tooltip>
           </template>
         </v-data-table>
       </v-card>

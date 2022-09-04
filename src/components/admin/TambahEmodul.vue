@@ -72,7 +72,7 @@
           </v-col>
         </v-row>
         <v-file-input
-          accept="/*"
+          accept="application/pdf"
           label="Select File"
           outlined
           dense
