@@ -113,9 +113,9 @@ export default {
               type: 'success'
             })
             if(this.user.user.role.role === 'Admin') {
-              this.$router.go({name: 'dashboard'})
+              this.$router.push({name: 'dashboard'})
             } else {
-              this.$router.go({name: 'program-studi'})
+              this.$router.push({name: 'program-studi'})
             }
             
           }
